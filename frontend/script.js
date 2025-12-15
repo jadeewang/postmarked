@@ -6,7 +6,7 @@
 // API URL - uses localhost for development, or the deployed backend URL
 const API_BASE = window.location.hostname === 'localhost' 
     ? 'http://localhost:5001'
-    : 'https://postmarked-api.onrender.com'; // Update this after deploying backend
+    : 'https://postmarked-api.onrender.com';
 
 // state
 let state = {
