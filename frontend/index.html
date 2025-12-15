@@ -13,8 +13,25 @@
     <div class="app">
         <!-- header -->
         <header class="header">
-            <h1 class="logo">postmarked</h1>
-            <p class="tagline">your one-of-a-kind postcard</p>
+            <div class="logo-row">
+                <svg class="deco deco-bird" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+                <h1 class="logo">postmarked</h1>
+                <svg class="deco deco-camera" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                    <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <svg class="deco deco-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <span class="deco deco-wave">～</span>
+            </div>
+            <p class="tagline">your personal postcard artist</p>
         </header>
 
         <!-- main content -->
@@ -24,18 +41,20 @@
                 <div class="step-content">
                     <span class="step-number">01</span>
                     <h2>pick a trip</h2>
-                    <p class="step-description">select 3 photos of your top memories</p>
+                    <p class="step-description">select 3 photos of your top memories from this trip</p>
                     
-                    <div class="upload-zone" id="upload-zone">
-                        <div class="upload-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                <polyline points="17 8 12 3 7 8"/>
-                                <line x1="12" y1="3" x2="12" y2="15"/>
-                            </svg>
+                    <div class="upload-zone scalloped" id="upload-zone">
+                        <div class="upload-zone-inner">
+                            <div class="upload-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                            </div>
+                            <p class="upload-text">drag photos here or <span class="upload-link">browse</span></p>
+                            <p class="upload-hint">3 photos max · jpg, png, webp</p>
                         </div>
-                        <p class="upload-text">drag photos here or <span class="upload-link">browse</span></p>
-                        <p class="upload-hint">3 photos max · jpg, png, webp</p>
                         <input type="file" id="file-input" multiple accept="image/*" hidden>
                     </div>
                     
