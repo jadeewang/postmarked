@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>postmarked</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- header -->
+        <header class="header">
+            <h1 class="logo">postmarked</h1>
+            <p class="tagline">turn your trip into a postcard</p>
+        </header>
+
+        <!-- main content -->
+        <main class="main">
+            <!-- step 1: upload -->
+            <section class="step step-upload active" id="step-upload">
+                <div class="step-content">
+                    <span class="step-number">01</span>
+                    <h2>drop your memories</h2>
+                    <p class="step-description">select 3 photos from your trip</p>
+                    
+                    <div class="upload-zone" id="upload-zone">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <p class="upload-text">drag photos here or <span class="upload-link">browse</span></p>
+                        <p class="upload-hint">3 photos max · jpg, png, webp</p>
+                        <input type="file" id="file-input" multiple accept="image/*" hidden>
+                    </div>
+                    
+                    <div class="preview-grid" id="preview-grid"></div>
+                    
+                    <button class="btn btn-primary" id="btn-next-upload" disabled>
+                        continue
+                    </button>
+                </div>
+            </section>
+
+            <!-- step 2: customize -->
+            <section class="step step-customize" id="step-customize">
+                <div class="step-content">
+                    <span class="step-number">02</span>
+                    <h2>set the vibe</h2>
+                    <p class="step-description">tell us about your trip</p>
+                    
+                    <div class="form-group">
+                        <label for="location">where did you go?</label>
+                        <input type="text" id="location" placeholder="rome, autumn 2024" autocomplete="off">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>art style</label>
+                        <div class="style-options" id="art-styles">
+                            <button class="style-btn active" data-value="vintage_postcard">
+                                <span class="style-icon">🎞️</span>
+                                <span class="style-name">vintage</span>
+                            </button>
+                            <button class="style-btn" data-value="watercolor_illustration">
+                                <span class="style-icon">🎨</span>
+                                <span class="style-name">watercolor</span>
+                            </button>
+                            <button class="style-btn" data-value="collage">
+                                <span class="style-icon">✂️</span>
+                                <span class="style-name">collage</span>
+                            </button>
+                            <button class="style-btn" data-value="graphic_line_art">
+                                <span class="style-icon">✏️</span>
+                                <span class="style-name">line art</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>caption tone</label>
+                        <div class="style-options" id="caption-tones">
+                            <button class="style-btn active" data-value="artistic">
+                                <span class="style-icon">🌙</span>
+                                <span class="style-name">artistic</span>
+                            </button>
+                            <button class="style-btn" data-value="satirical">
+                                <span class="style-icon">😏</span>
+                                <span class="style-name">satirical</span>
+                            </button>
+                            <button class="style-btn" data-value="dramatic">
+                                <span class="style-icon">🎭</span>
+                                <span class="style-name">dramatic</span>
+                            </button>
+                            <button class="style-btn" data-value="minimalist">
+                                <span class="style-icon">◽</span>
+                                <span class="style-name">minimalist</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">trip notes <span class="optional">(optional)</span></label>
+                        <textarea id="description" placeholder="a long weekend of pasta, ruins, and getting lost..."></textarea>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-secondary" id="btn-back-customize">back</button>
+                        <button class="btn btn-primary" id="btn-generate">create postcard</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- step 3: generating -->
+            <section class="step step-generating" id="step-generating">
+                <div class="step-content generating-content">
+                    <div class="loader">
+                        <div class="loader-stamp">📮</div>
+                    </div>
+                    <h2>creating your postcard</h2>
+                    <p class="generating-status" id="generating-status">analyzing your photos...</p>
+                </div>
+            </section>
+
+            <!-- step 4: result -->
+            <section class="step step-result" id="step-result">
+                <div class="step-content">
+                    <div class="postcard" id="postcard">
+                        <div class="postcard-image-container">
+                            <img src="" alt="Your postcard" id="postcard-image" class="postcard-image">
+                        </div>
+                        <div class="postcard-text">
+                            <p class="postcard-location" id="postcard-location"></p>
+                            <p class="postcard-caption" id="postcard-caption"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="btn btn-secondary" id="btn-regenerate">
+                            <span>✨</span> regenerate
+                        </button>
+                        <button class="btn btn-primary" id="btn-download">
+                            <span>↓</span> download
+                        </button>
+                    </div>
+                    
+                    <button class="btn btn-text" id="btn-start-over">start over</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer">
+            <p>made with ai · <a href="https://github.com" target="_blank">how it works</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
