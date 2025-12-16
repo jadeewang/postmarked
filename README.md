@@ -4,7 +4,7 @@
 
 Turn your travel memories into a custom AI-generated postcard. Upload 1-3 photos from a specific trip, and Postmarked will analyze them to create a unique, illustrated postcard with a personalized caption that captures the one-of-a-kind nature of your experience.
 
-![postmarked demo](assets/demo.png)
+![postmarked demo](https://vimeo.com/1146886743?share=copy&fl=sv&fe=ci#t=0)
 
 ---
 
