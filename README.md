@@ -156,3 +156,6 @@ MIT License - feel free to use, modify, and share!
 
 Built by Jade Wang for CNMPS 3002 with the help of Claude, Orchids, and Cursor ✨.
 
+---
+## Report
+Read [my reflection on the build process and learnings here](https://right-devourer-3c2.notion.site/reflecting-on-building-Postmarked-2ca37b278d0e80e99026d38a3e769cfb?source=copy_link). Thanks for checking out Postmarked :)
