@@ -103,10 +103,9 @@ def generate_postcard_image(
         response = client.images.generate(
             model="dall-e-3",
             prompt=full_prompt,
-            size="512x512",  # Reduced for faster generation
+            size="1024x1024",  # DALL-E 3 only supports 1024x1024, 1024x1792, 1792x1024
             quality="standard",
-            n=1,
-            timeout=120  # 2 minute timeout
+            n=1
         )
         print("Image generation complete!")
         
@@ -211,8 +210,7 @@ Return ONLY the JSON object."""
                 }
             ],
             max_tokens=200,
-            temperature=0.8,  # Higher temperature for creative output
-            timeout=30  # 30 second timeout for caption
+            temperature=0.8  # Higher temperature for creative output
         )
         print("Caption generation complete!")
         

@@ -94,8 +94,7 @@ def analyze_single_image(client: OpenAI, image_data: bytes, image_format: str = 
                 }
             ],
             max_tokens=1000,
-            temperature=0.2,  # Low temperature for consistent analysis
-            timeout=60  # 1 minute timeout per image
+            temperature=0.2  # Low temperature for consistent analysis
         )
         print(f"Vision analysis complete!")
         
