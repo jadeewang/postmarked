@@ -99,13 +99,16 @@ def generate_postcard_image(
     full_prompt = " ".join(prompt_parts)
     
     try:
+        print("Starting DALL-E image generation...")
         response = client.images.generate(
             model="dall-e-3",
             prompt=full_prompt,
-            size="1024x1024",
+            size="512x512",  # Reduced for faster generation
             quality="standard",
-            n=1
+            n=1,
+            timeout=120  # 2 minute timeout
         )
+        print("Image generation complete!")
         
         image_url = response.data[0].url
         revised_prompt = response.data[0].revised_prompt
@@ -194,6 +197,7 @@ Return your response as a JSON object:
 Return ONLY the JSON object."""
 
     try:
+        print("Generating caption...")
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
@@ -207,8 +211,10 @@ Return ONLY the JSON object."""
                 }
             ],
             max_tokens=200,
-            temperature=0.8  # Higher temperature for creative output
+            temperature=0.8,  # Higher temperature for creative output
+            timeout=30  # 30 second timeout for caption
         )
+        print("Caption generation complete!")
         
         response_text = response.choices[0].message.content.strip()
         

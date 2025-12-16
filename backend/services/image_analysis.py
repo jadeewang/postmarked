@@ -72,6 +72,7 @@ def analyze_single_image(client: OpenAI, image_data: bytes, image_format: str = 
     base64_image = encode_image_to_base64(image_data)
     
     try:
+        print(f"Calling GPT-4 Vision...")
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
@@ -93,8 +94,10 @@ def analyze_single_image(client: OpenAI, image_data: bytes, image_format: str = 
                 }
             ],
             max_tokens=1000,
-            temperature=0.2  # Low temperature for consistent analysis
+            temperature=0.2,  # Low temperature for consistent analysis
+            timeout=60  # 1 minute timeout per image
         )
+        print(f"Vision analysis complete!")
         
         # Parse the JSON response
         response_text = response.choices[0].message.content.strip()
