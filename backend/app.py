@@ -32,8 +32,8 @@ from services.generation import (
 env_path = Path(__file__).parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
-# Initialize Flask app
-app = Flask(__name__)
+# Initialize Flask app with static files
+app = Flask(__name__, static_folder='static', static_url_path='')
 CORS(app)  # Enable CORS for frontend
 
 # Configuration
@@ -67,6 +67,12 @@ def get_image_format(filename):
     if ext == 'jpg':
         return 'jpeg'
     return ext
+
+
+@app.route('/')
+def serve_frontend():
+    """Serve the frontend."""
+    return app.send_static_file('index.html')
 
 
 @app.route('/health', methods=['GET'])
